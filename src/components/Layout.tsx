@@ -20,6 +20,7 @@ import {
 } from 'lucide-react'
 import { useTheme } from '../hooks/useAppState'
 import { useOnline } from '../hooks/useMisc'
+import { ShareButton } from './ShareButton'
 
 const sections = [
   { to: '/', label: 'Início', icon: Home, end: true },
@@ -87,10 +88,13 @@ export function Layout({ children }: { children: ReactNode }) {
               ))}
             </ul>
           </nav>
+          <div className="ml-auto lg:ml-2">
+            <ShareButton variant="icon" title={document.title} text="Europa Natal 2026 — André & Ricardo" />
+          </div>
           <button
             type="button"
             onClick={toggle}
-            className="ml-auto grid h-10 w-10 place-items-center rounded-full hover:bg-white/10 lg:ml-2"
+            className="grid h-10 w-10 place-items-center rounded-full hover:bg-white/10"
             aria-label={theme === 'escuro' ? 'Ativar modo claro' : 'Ativar modo escuro'}
           >
             {theme === 'escuro' ? <Sun className="h-5 w-5" aria-hidden /> : <Moon className="h-5 w-5" aria-hidden />}

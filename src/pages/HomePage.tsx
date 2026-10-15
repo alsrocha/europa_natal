@@ -8,6 +8,7 @@ import { tripPhase, localTime } from '../utils/dates'
 import { useNow } from '../hooks/useMisc'
 import { useChecklist, useTickets } from '../hooks/useAppState'
 import { TripTimeline } from '../components/TripTimeline'
+import { ShareButton } from '../components/ShareButton'
 import { DayView, dayLabel } from '../components/DayView'
 import { PhotoView, SectionTitle, Stat } from '../components/ui'
 
@@ -40,6 +41,9 @@ export function HomePage() {
             Europa Natal 2026
             <span className="block text-3xl italic text-gold md:text-5xl">Destino &amp; História</span>
           </h1>
+          <p className="fade-in mt-3 font-display text-2xl text-cream md:text-3xl">
+            <span aria-hidden className="mr-2 text-gold">✦</span>André &amp; Ricardo
+          </p>
           <p className="fade-in mt-5 max-w-2xl text-lg text-cream/85">
             Uma viagem entre cidades históricas, mercados de Natal, arquitetura, cultura e gastronomia — Espanha, França, Alemanha e Luxemburgo.
           </p>
@@ -50,6 +54,12 @@ export function HomePage() {
             <Link to="/roteiro" className="btn border border-cream/40 text-cream hover:bg-white/10">
               <CalendarDays className="h-4 w-4" aria-hidden /> Roteiro completo
             </Link>
+            <ShareButton
+              variant="light"
+              title="Europa Natal 2026 — André & Ricardo"
+              text="Nosso roteiro pelos mercados de Natal da Europa, de 26/11 a 20/12/2026."
+              url={window.location.href.split('#')[0]}
+            />
           </div>
           {hero && <p className="mt-6 text-[10px] text-cream/60">Foto: {hero.author ?? 'ver créditos'} · {hero.license}</p>}
         </div>

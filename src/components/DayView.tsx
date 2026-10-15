@@ -9,6 +9,8 @@ import { longDate, shortDate } from '../utils/dates'
 import { directionsUrl } from '../utils/download'
 import { ReliabilityBadge, statusMeta } from './ui'
 import { useAttractionStatus } from '../hooks/useAppState'
+import { ShareButton } from './ShareButton'
+import { shareUrl } from '../utils/share'
 
 function kindIcon(item: DayItem) {
   if (item.kind === 'transporte') return /voo|ryanair|iberia/i.test(item.text) ? Plane : TrainFront
@@ -40,10 +42,11 @@ export function DayView({ day, compact = false }: { day: TripDay; compact?: bool
           <p className="text-2 first-letter:uppercase">{longDate(day.date)}</p>
         </div>
         {!compact && (
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Link to={`/mapa?dia=${day.date}`} className="btn btn-ghost btn-sm">
               <MapIcon className="h-4 w-4" aria-hidden /> Ver no mapa
             </Link>
+            <ShareButton title={`${dayLabel(day)} · ${shortDate(day.date)} — ${day.title}`} text="Programação do dia — Europa Natal 2026" url={shareUrl(`/roteiro/${day.date}`)} />
             <Link to={`/caderno/${day.date}`} className="btn btn-ghost btn-sm">
               <NotebookPen className="h-4 w-4" aria-hidden /> Caderno do dia
             </Link>

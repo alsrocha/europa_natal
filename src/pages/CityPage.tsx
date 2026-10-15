@@ -9,6 +9,8 @@ import { longDate, shortDate } from '../utils/dates'
 import { useAttractionStatus, useCityNotes } from '../hooks/useAppState'
 import { useHashScroll } from '../hooks/useHashScroll'
 import { AttractionCard } from '../components/AttractionCard'
+import { ShareButton } from '../components/ShareButton'
+import { shareUrl } from '../utils/share'
 import { Gallery } from '../components/Gallery'
 import { CopyButton, ExternalLink, Pill, PhotoCredit, SectionTitle } from '../components/ui'
 import { attractionPoint, hotelPoints } from '../utils/mapData'
@@ -89,6 +91,9 @@ export function CityPage() {
               </span>
             )}
             {hotel && <span className="rounded-full bg-white/10 px-3 py-1.5">🏨 {hotel.name}</span>}
+          </div>
+          <div className="mt-5">
+            <ShareButton variant="light" title={`${city.name} — Europa Natal 2026`} text={city.tagline} url={shareUrl(`/cidades/${city.id}`)} />
           </div>
         </div>
       </header>
