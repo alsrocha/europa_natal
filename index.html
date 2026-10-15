@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Europa Natal 2026 — Destino &amp; História</title>
+    <meta name="description" content="Guia editorial interativo de uma viagem pelos mercados de Natal da Europa: Barcelona, Paris, Colmar, Strasbourg, Freiburg, Luxemburgo e Madrid, de 26/11 a 20/12/2026." />
+    <meta name="theme-color" content="#152638" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Europa Natal 2026 — Destino & História" />
+    <meta property="og:description" content="Uma viagem entre cidades históricas, mercados de Natal, arquitetura, cultura e gastronomia." />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content="og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="icon-192.svg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      try {
+        var t = localStorage.getItem('en26:tema');
+        var dark = t ? JSON.parse(t) === 'escuro' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <noscript>Este guia precisa de JavaScript habilitado.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

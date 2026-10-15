@@ -1,0 +1,6 @@
+{
+  "generatedAt": null,
+  "note": "Gerado por scripts/enrich.mjs. Não edite manualmente; rode `npm run enrich`.",
+  "attractions": {},
+  "cities": {}
+}
