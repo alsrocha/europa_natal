@@ -17,12 +17,22 @@ export function useAttractionStatus() {
 }
 
 export function useTickets() {
-  const [tickets, setTickets] = useLocalStorage<Ticket[]>('ingressos', ticketSeeds)
+  const [stored, setTickets] = useLocalStorage<Ticket[]>('ingressos', ticketSeeds)
+  const [removed, setRemoved] = useLocalStorage<string[]>('ingressos-removidos', [])
+  // Ingressos novos do roteiro aparecem também em aparelhos que já tinham uma lista salva.
+  const missing = ticketSeeds.filter((s) => !stored.some((x) => x.id === s.id) && !removed.includes(s.id))
+  const tickets = missing.length ? [...stored, ...missing] : stored
   return {
     tickets,
-    upsert: (t: Ticket) => setTickets((all) => (all.some((x) => x.id === t.id) ? all.map((x) => (x.id === t.id ? t : x)) : [...all, t])),
-    remove: (id: string) => setTickets((all) => all.filter((x) => x.id !== id)),
-    reset: () => setTickets(ticketSeeds),
+    upsert: (t: Ticket) => setTickets(() => (tickets.some((x) => x.id === t.id) ? tickets.map((x) => (x.id === t.id ? t : x)) : [...tickets, t])),
+    remove: (id: string) => {
+      setRemoved((r) => [...r, id])
+      setTickets(() => tickets.filter((x) => x.id !== id))
+    },
+    reset: () => {
+      setRemoved([])
+      setTickets(ticketSeeds)
+    },
   }
 }
 

@@ -151,9 +151,10 @@ export const itinerary: TripDay[] = [
     title: 'Paris alternativa',
     items: items([
       ['Quartier Latin', { a: 'quartier-latin' }],
+      ['Panthéon — visita ao interior (nave e cripta)', { t: '10:30', a: 'pantheon', r: 'pendente', n: 'Horário sugerido 10h30–12h00. Ingresso ainda não comprado. Sepulturas de Victor Hugo, Zola, Marie Curie e Alexandre Dumas.' }],
       ['Livrarias históricas (Shakespeare and Company e outras)', { a: 'shakespeare-co' }],
       ['Jardin du Luxembourg', { a: 'jardin-luxembourg' }],
-      ['Panthéon, ao menos pelo exterior', { a: 'pantheon' }],
+      ['Cafés do Quartier Latin', { k: 'livre' }],
       ['Musée de Cluny (opção)', { a: 'cluny', r: 'opcional' }],
       ['Butte-aux-Cailles', { a: 'butte-aux-cailles', r: 'opcional', n: 'Escolher um: Butte-aux-Cailles, Canal Saint-Martin ou Coulée verte.' }],
       ['ou Canal Saint-Martin', { a: 'canal-saint-martin', r: 'opcional' }],

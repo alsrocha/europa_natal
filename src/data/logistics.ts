@@ -32,6 +32,7 @@ export const ticketSeeds: Ticket[] = [
   { id: 't-vicens', cityId: 'barcelona', attraction: 'Casa Vicens ou Casa Batlló', plannedDate: '2026-11-29', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://casavicens.org/', status: 'nao-pesquisado', notes: 'Somente se escolhida.' },
   { id: 't-garnier', cityId: 'paris', attraction: 'Palais Garnier', plannedDate: '2026-12-02', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://www.operadeparis.fr/', status: 'pendente', priority: true },
   { id: 't-grandpalais', cityId: 'paris', attraction: 'Grand Palais (conforme exposição)', plannedDate: '2026-12-03', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://www.grandpalais.fr/', status: 'nao-pesquisado', priority: true },
+  { id: 't-pantheon', cityId: 'paris', attraction: 'Panthéon — nave, cripta e exposições', plannedDate: '2026-12-05', people: 2, icomPossible: 'Previsto gratuito para Ricardo (ICOM); confirmar na bilheteria', officialUrl: 'https://tickets.monuments-nationaux.fr/', status: 'pendente', notes: 'Prioridade média. Horário sugerido 10h30–12h00.' },
   { id: 't-unterlinden', cityId: 'colmar', attraction: 'Musée Unterlinden', plannedDate: '2026-12-07', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://www.musee-unterlinden.com/', status: 'pendente', priority: true },
   { id: 't-alsacia', cityId: 'colmar', attraction: 'Passeio aos vilarejos da Alsácia', plannedDate: '2026-12-08', people: 2, icomPossible: 'Não se aplica', status: 'em-analise', priority: true, notes: 'Somente se for contratado.' },
 ]
@@ -65,6 +66,7 @@ export const checklist: ChecklistCategory[] = [
       { id: 'i-sagrada', label: 'Sagrada Família' },
       { id: 'i-guell', label: 'Park Güell' },
       { id: 'i-garnier', label: 'Palais Garnier' },
+      { id: 'i-pantheon', label: 'Panthéon (05/12)' },
       { id: 'i-museus', label: 'Museus selecionados' },
     ],
   },
