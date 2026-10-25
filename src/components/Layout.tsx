@@ -4,6 +4,7 @@ import {
   BookOpen,
   CalendarDays,
   CheckSquare,
+  Clapperboard,
   Home,
   Info,
   Landmark,
@@ -31,6 +32,7 @@ const sections = [
   { to: '/financeiro', label: 'Financeiro', icon: Wallet },
   { to: '/checklist', label: 'Checklist', icon: CheckSquare },
   { to: '/caderno', label: 'Caderno', icon: NotebookPen },
+  { to: '/gravacoes', label: 'Gravações', icon: Clapperboard },
   { to: '/informacoes', label: 'Informações', icon: Info },
 ]
 
@@ -65,21 +67,21 @@ export function Layout({ children }: { children: ReactNode }) {
       </a>
       <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/95 text-cream backdrop-blur no-print">
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 md:px-8">
-          <Link to="/" className="flex items-center gap-2" aria-label="Europa Natal 2026 — início">
+          <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="Europa Natal 2026 — início">
             <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className="h-7 w-7" />
-            <span className="font-display text-xl font-semibold leading-none">
+            <span className="font-display whitespace-nowrap text-xl font-semibold leading-none lg:hidden">
               Europa Natal <span className="text-gold">2026</span>
             </span>
           </Link>
           <nav aria-label="Seções" className="ml-auto hidden lg:block">
-            <ul className="flex items-center gap-1">
+            <ul className="flex items-center gap-0.5 xl:gap-1">
               {sections.map((s) => (
                 <li key={s.to}>
                   <NavLink
                     to={s.to}
                     end={s.end}
                     className={({ isActive }) =>
-                      `rounded-full px-3 py-1.5 text-sm font-medium transition ${isActive ? 'bg-gold text-navy' : 'text-cream/85 hover:bg-white/10'}`
+                      `rounded-full px-2 py-1.5 text-sm font-medium transition xl:px-3 ${isActive ? 'bg-gold text-navy' : 'text-cream/85 hover:bg-white/10'}`
                     }
                   >
                     {s.label}

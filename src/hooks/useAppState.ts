@@ -1,3 +1,4 @@
+import { ideaSeeds, type RecordingIdea } from '../data/recordingIdeas'
 import type { AttractionStatus, Ticket } from '../types'
 import { useLocalStorage } from './useLocalStorage'
 import { ticketSeeds } from '../data/logistics'
@@ -33,6 +34,25 @@ export function useTickets() {
       setRemoved([])
       setTickets(ticketSeeds)
     },
+  }
+}
+
+export function useRecordingIdeas() {
+  const [stored, setIdeas] = useLocalStorage<RecordingIdea[]>('ideias-gravacao', ideaSeeds)
+  const [removed, setRemoved] = useLocalStorage<string[]>('ideias-removidas', [])
+  const missing = ideaSeeds.filter((s) => !stored.some((x) => x.id === s.id) && !removed.includes(s.id))
+  const ideas = missing.length ? [...missing, ...stored] : stored
+  return {
+    ideas,
+    add: (d: Omit<RecordingIdea, 'id' | 'status' | 'createdAt'>) =>
+      setIdeas(() => [{ ...d, id: `ideia-${Date.now().toString(36)}`, status: 'ideia', createdAt: new Date().toISOString().slice(0, 10) }, ...ideas]),
+    update: (i: RecordingIdea) => setIdeas(() => ideas.map((x) => (x.id === i.id ? i : x))),
+    remove: (id: string) => {
+      setRemoved((r) => [...r, id])
+      setIdeas(() => ideas.filter((x) => x.id !== id))
+    },
+    /** Mescla ideias de um arquivo exportado (o arquivo prevalece em ids repetidos). */
+    importIdeas: (list: RecordingIdea[]) => setIdeas(() => [...list, ...ideas.filter((x) => !list.some((y) => y.id === x.id))]),
   }
 }
 
