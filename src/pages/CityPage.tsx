@@ -82,7 +82,7 @@ export function CityPage() {
           <div className="mt-6 flex flex-wrap gap-2 text-sm">
             <span className="rounded-full bg-white/10 px-3 py-1.5">
               <CalendarDays className="mr-1 inline h-4 w-4" aria-hidden />
-              {city.isBase ? `${shortDate(city.arrival)} → ${shortDate(city.departure)}` : `${shortDate(city.arrival)} (bate-volta, data a confirmar entre 12 e 13/12)`}
+              {city.isBase ? `${shortDate(city.arrival)} → ${shortDate(city.departure)}` : 'Alternativa, fora do roteiro atual'}
             </span>
             {city.isBase && (
               <span className="rounded-full bg-white/10 px-3 py-1.5">
@@ -323,7 +323,7 @@ export function CitiesPage() {
         <div className="mx-auto max-w-6xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">Destinos</p>
           <h1 className="text-4xl font-semibold md:text-5xl">Cidades</h1>
-          <p className="mt-3 max-w-2xl text-cream/85">Seis bases de hospedagem e um bate-volta à Alemanha.</p>
+          <p className="mt-3 max-w-2xl text-cream/85">Seis bases de hospedagem e um passeio pela Floresta Negra a partir de Strasbourg.</p>
         </div>
       </header>
       <div className="mx-auto grid max-w-6xl gap-5 px-4 py-8 sm:grid-cols-2 md:px-8 lg:grid-cols-3">
@@ -342,7 +342,7 @@ export function CitiesPage() {
               </div>
               <div className="p-5">
                 <p className="text-2 text-xs font-semibold uppercase tracking-wider">
-                  <span aria-hidden>{c.flag}</span> {c.country} · {c.isBase ? `${shortDate(c.arrival)}–${shortDate(c.departure)} · ${c.nights} noites` : 'bate-volta 12 ou 13/12'}
+                  <span aria-hidden>{c.flag}</span> {c.country} · {c.isBase ? `${shortDate(c.arrival)}–${shortDate(c.departure)} · ${c.nights} noites` : 'alternativa'}
                 </p>
                 <h2 className="text-3xl font-semibold group-hover:text-[var(--accent-text)]">{c.name}</h2>
                 <p className="text-2 mt-1 text-sm">{c.tagline}</p>

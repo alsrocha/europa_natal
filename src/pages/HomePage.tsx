@@ -139,7 +139,7 @@ export function HomePage() {
         {/* LINHA DO TEMPO */}
         <section>
           <SectionTitle eyebrow="Percurso" title="Seis bases, um inverno europeu">
-            Chegada por Madrid, trem até Barcelona e, de lá, Paris, Alsácia, Luxemburgo e o retorno a Madrid. Freiburg entra como bate-volta a partir de Strasbourg.
+            Chegada por Madrid, trem até Barcelona e, de lá, Paris, Alsácia, Luxemburgo e o retorno a Madrid. De Strasbourg, um passeio reservado pela Floresta Negra em 11/12.
           </SectionTitle>
           <TripTimeline currentCity={phase.phase === 'durante' ? phase.day.cityId : undefined} />
         </section>
@@ -153,7 +153,7 @@ export function HomePage() {
                 <PhotoView photo={cityHero(c.id)} title={c.name} ratio="aspect-[16/10]" showCredit={false} />
                 <div className="p-4">
                   <p className="text-2 text-xs font-semibold uppercase tracking-wider">
-                    <span aria-hidden>{c.flag}</span> {c.country} · {c.isBase ? `${c.nights} noites` : 'bate-volta'}
+                    <span aria-hidden>{c.flag}</span> {c.country} · {c.isBase ? `${c.nights} noites` : 'alternativa'}
                   </p>
                   <h3 className="text-2xl font-semibold group-hover:text-[var(--accent-text)]">{c.name}</h3>
                   <p className="text-2 mt-1 text-sm">{c.tagline}</p>
@@ -161,7 +161,7 @@ export function HomePage() {
               </Link>
             ))}
           </div>
-          <p className="text-2 mt-3 text-xs">{baseCities.length} bases de hospedagem + Freiburg im Breisgau como passeio adicional.</p>
+          <p className="text-2 mt-3 text-xs">{baseCities.length} bases de hospedagem. Freiburg im Breisgau ficou como alternativa, fora do roteiro atual.</p>
         </section>
       </div>
     </>

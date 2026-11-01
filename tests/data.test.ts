@@ -41,12 +41,14 @@ describe('dados da viagem', () => {
 
   it('nenhuma atração aparece como reservada por padrão e horários não são inventados', () => {
     for (const a of attractions) expect(a.hours).toBeUndefined()
-    for (const t of ticketSeeds) expect(['reservado', 'pago', 'concluido']).not.toContain(t.status)
+    // Só aparecem como comprados/reservados os itens informados pelos viajantes.
+    const booked = ticketSeeds.filter((t) => ['reservado', 'pago', 'concluido'].includes(t.status)).map((t) => t.id)
+    expect(booked).toEqual(['t-sagrada', 't-floresta'])
   })
 
   it('transportes confirmados e pendentes conforme informado', () => {
     const confirmed = transport.filter((t) => t.status === 'confirmado').map((t) => t.id)
-    expect(confirmed).toEqual(['for-mad', 'mad-bcn', 'bcn-par', 'par-col', 'sxb-lux', 'lux-mad', 'mad-gru'])
+    expect(confirmed).toEqual(['for-mad', 'mad-bcn', 'bcn-par', 'par-col', 'col-sxb', 'sxb-lux', 'lux-mad', 'mad-gru'])
     expect(transport.find((t) => t.id === 'mad-gru')?.departure).toBeUndefined()
     expect(transport.find((t) => t.id === 'sxb-lux')).toMatchObject({ departure: '12:31', arrival: '14:15', seats: 'Vagão 11, assentos 174 e 175' })
   })

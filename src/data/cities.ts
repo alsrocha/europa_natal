@@ -248,7 +248,7 @@ export const cities: City[] = [
     departure: '2026-12-12',
     nights: 0,
     isBase: false,
-    tagline: 'Bate-volta à Floresta Negra: catedral gótica e os canais Bächle',
+    tagline: 'Fora do roteiro atual: o bate-volta deu lugar ao passeio reservado pela Floresta Negra (11/12). Fica como alternativa.',
     summary:
       'Cidade universitária às portas da Floresta Negra, Freiburg tem uma das mais belas catedrais góticas da Alemanha e pequenos canais (Bächle) que correm pelas ruas.',
     history: [

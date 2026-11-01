@@ -170,7 +170,7 @@ export function MapPage() {
             <span className="inline-block h-0 w-10 border-t-4 border-dashed border-[#7C3AED]" /> Ordem de visita do dia
           </p>
           <p className="text-2 md:col-span-2">
-            Marcadores numerados: as seis bases em ordem de chegada; “F” é Freiburg. Atrações sem verificação automática aparecem em posição aproximada.
+            Marcadores numerados: as seis bases em ordem de chegada; “F” é Freiburg, alternativa fora do roteiro atual. Atrações sem verificação automática aparecem em posição aproximada.
             Os voos intercontinentais (Fortaleza → Madrid e Madrid → Guarulhos) não são desenhados para manter o mapa legível.
           </p>
         </div>

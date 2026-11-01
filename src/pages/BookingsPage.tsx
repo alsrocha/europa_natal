@@ -152,6 +152,8 @@ function TicketForm({ initial, onSave, onCancel }: { initial: Ticket; onSave: (t
   )
 }
 
+const levelLabel = { essencial: 'essencial', alta: 'prioridade alta', media: 'prioridade média', opcional: 'opcional' } as const
+
 export function BookingsPage() {
   useHashScroll()
   const { tickets, upsert, remove, reset } = useTickets()
@@ -168,7 +170,7 @@ export function BookingsPage() {
     [tickets, cityF, statusF],
   )
   const open = tickets.filter((t) => OPEN.includes(t.status))
-  const priorityOpen = open.filter((t) => t.priority)
+  const priorityOpen = open.filter((t) => t.priority || t.level === 'essencial')
   const confirmed = transport.filter((t) => t.status === 'confirmado')
   const pending = transport.filter((t) => t.status === 'pendente')
 
@@ -182,7 +184,7 @@ export function BookingsPage() {
           <Stat label="Hotéis confirmados" value={hotels.length} hint="23 noites" />
           <Stat label="Deslocamentos confirmados" value={confirmed.length} />
           <Stat label="Deslocamentos pendentes" value={pending.length} hint="comprar ou definir" />
-          <Stat label="Ingressos em aberto" value={open.length} hint={`${priorityOpen.length} prioritários`} />
+          <Stat label="Ingressos em aberto" value={open.length} hint={`${priorityOpen.length} essenciais`} />
         </section>
 
         {/* HOTÉIS */}
@@ -258,7 +260,7 @@ export function BookingsPage() {
             <div role="status" className="mb-4 flex gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-amber-950 dark:border-amber-700 dark:bg-amber-900/30 dark:text-amber-50">
               <AlertTriangle className="h-5 w-5 shrink-0" aria-hidden />
               <p className="text-sm">
-                <strong>{priorityOpen.length} ingresso(s) prioritário(s) em aberto:</strong> {priorityOpen.map((t) => t.attraction).join(', ')}.
+                <strong>{priorityOpen.length} ingresso(s) essencial(is) em aberto:</strong> {priorityOpen.map((t) => t.attraction).join(', ')}.
               </p>
             </div>
           )}
@@ -325,7 +327,7 @@ export function BookingsPage() {
                         {cityById[t.cityId].name}
                         {t.plannedDate && ` · ${shortDate(t.plannedDate)}`}
                         {t.time && ` · ${t.time}`}
-                        {t.priority && ' · prioritário'}
+                        {t.level ? ` · ${levelLabel[t.level]}` : t.priority && ' · prioritário'}
                       </p>
                       <p className="font-display text-xl font-semibold leading-tight">{t.attraction}</p>
                     </div>

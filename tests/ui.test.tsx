@@ -42,7 +42,9 @@ describe('interface', () => {
       </MemoryRouter>,
     )
     const pend = screen.getByRole('heading', { name: /Pendentes/ }).parentElement!
-    expect(within(pend).getByText(/Colmar → Strasbourg/)).toBeInTheDocument()
+    expect(within(pend).getByText(/Colmar → Eguisheim/)).toBeInTheDocument()
+    const conf = screen.getByRole('heading', { name: /Confirmados/ }).parentElement!
+    expect(within(conf).getByText(/Colmar → Strasbourg/)).toBeInTheDocument()
   })
 
   it('financeiro começa vazio (dados privados não vêm no site)', () => {

@@ -168,6 +168,8 @@ export interface Ticket {
   purchaseDate?: string
   notes?: string
   priority?: boolean
+  /** Prioridade definida pelos viajantes. */
+  level?: 'essencial' | 'alta' | 'media' | 'opcional'
 }
 
 export interface ChecklistItem {

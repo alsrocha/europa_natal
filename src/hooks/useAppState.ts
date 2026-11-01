@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
 import { ideaSeeds, type RecordingIdea } from '../data/recordingIdeas'
 import type { AttractionStatus, Ticket } from '../types'
 import { useLocalStorage } from './useLocalStorage'
-import { ticketSeeds } from '../data/logistics'
+import { TICKET_SEEDS_VERSION, ticketSeeds } from '../data/logistics'
 
 export function useTheme() {
   const prefersDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches
@@ -18,8 +19,17 @@ export function useAttractionStatus() {
 }
 
 export function useTickets() {
-  const [stored, setTickets] = useLocalStorage<Ticket[]>('ingressos', ticketSeeds)
+  const [saved, setTickets] = useLocalStorage<Ticket[]>('ingressos', ticketSeeds)
   const [removed, setRemoved] = useLocalStorage<string[]>('ingressos-removidos', [])
+  const [version, setVersion] = useLocalStorage<number>('ingressos-versao', 0)
+  // Quando o roteiro oficial muda (TICKET_SEEDS_VERSION), os ingressos do roteiro são atualizados
+  // nos aparelhos que já tinham uma lista salva; os ingressos criados pelo usuário são mantidos.
+  const stored = version < TICKET_SEEDS_VERSION ? saved.map((t) => ticketSeeds.find((s) => s.id === t.id) ?? t) : saved
+  useEffect(() => {
+    if (version >= TICKET_SEEDS_VERSION) return
+    setTickets((all) => all.map((t) => ticketSeeds.find((s) => s.id === t.id) ?? t))
+    setVersion(TICKET_SEEDS_VERSION)
+  }, [version, setTickets, setVersion])
   // Ingressos novos do roteiro aparecem também em aparelhos que já tinham uma lista salva.
   const missing = ticketSeeds.filter((s) => !stored.some((x) => x.id === s.id) && !removed.includes(s.id))
   const tickets = missing.length ? [...stored, ...missing] : stored

@@ -31,7 +31,7 @@ export function cityPoints(): MapPoint[] {
     lat: c.coords.lat,
     lng: c.coords.lng,
     title: `${c.flag} ${c.name}`,
-    subtitle: c.isBase ? `${c.nights} noites` : 'Bate-volta',
+    subtitle: c.isBase ? `${c.nights} noites` : 'Alternativa, fora do roteiro atual',
     description: c.tagline,
     kind: 'city' as const,
     label: c.isBase ? String(i + 1 - (i > cities.findIndex((x) => !x.isBase) ? 1 : 0)) : 'F',
