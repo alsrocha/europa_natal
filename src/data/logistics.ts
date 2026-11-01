@@ -24,7 +24,7 @@ export const extraPlaces = {
 
 /** Ingressos e reservas — sementes iniciais; tudo é editável e salvo no aparelho. */
 /** Aumente ao mudar ticketSeeds: os aparelhos com lista salva recebem a versão nova. */
-export const TICKET_SEEDS_VERSION = 2
+export const TICKET_SEEDS_VERSION = 3
 
 export const ticketSeeds: Ticket[] = [
   { id: 't-sagrada', cityId: 'barcelona', attraction: 'Sagrada Família', plannedDate: '2026-11-28', time: '10:15 (Ricardo) · 10:45 (André)', people: 2, icomPossible: 'Ricardo: gratuito com ICOM, ingresso recebido', officialUrl: 'https://sagradafamilia.org/', status: 'pago', level: 'essencial', notes: 'Ambos com ingresso. Ainda não há confirmação de que possam entrar juntos.' },
@@ -42,7 +42,7 @@ export const ticketSeeds: Ticket[] = [
   { id: 't-unterlinden', cityId: 'colmar', attraction: 'Musée Unterlinden', plannedDate: '2026-12-07', people: 2, icomPossible: 'Não confirmado', officialUrl: 'https://www.musee-unterlinden.com/', status: 'pendente', level: 'alta', notes: 'Verificar.' },
   { id: 't-alsacia', cityId: 'colmar', attraction: 'Vilas da Alsácia (Eguisheim, Riquewihr, Kaysersberg)', plannedDate: '2026-12-08', people: 2, icomPossible: 'Não se aplica', status: 'em-analise', level: 'alta', notes: 'Transporte ainda a definir.' },
   { id: 't-parlamento', cityId: 'strasbourg', attraction: 'Parlamento Europeu', plannedDate: '2026-12-10', people: 2, icomPossible: 'Não se aplica: gratuito para todos', officialUrl: 'https://visiting.europarl.europa.eu/en/visitor-offer/strasbourg/hemicycle', status: 'pendente', level: 'alta', notes: 'Confirmar horário de visitação e acesso.' },
-  { id: 't-floresta', cityId: 'strasbourg', attraction: 'Passeio pela Floresta Negra', plannedDate: '2026-12-11', people: 2, icomPossible: 'Não se aplica', status: 'reservado', level: 'alta', notes: 'Conferir operadora, itinerário, horários, valor e se inclui Gengenbach.' },
+  { id: 't-floresta', cityId: 'strasbourg', attraction: 'Experiência Premium de Natal — Floresta Negra', plannedDate: '2026-12-11', time: '09:00–18:00', people: 2, icomPossible: 'Não se aplica', status: 'reservado', level: 'alta', notes: 'Encontro na Place de l’Étoile. Funicular Merkurberg, Baden-Baden, Castelo Staufenberg (taça de vinho incluída) e Gengenbach. Guia brasileira e van incluídas; almoço e compras não incluídos.' },
   { id: 't-rohan', cityId: 'strasbourg', attraction: 'Palais Rohan / Musée de l’Œuvre Notre-Dame', plannedDate: '2026-12-13', people: 2, icomPossible: 'Ricardo: gratuito com ICOM', officialUrl: 'https://www.musees.strasbourg.eu/', status: 'nao-pesquisado', level: 'alta', notes: 'Visita flexível.' },
   { id: 't-bock', cityId: 'luxemburgo', attraction: 'Casamatas do Bock', plannedDate: '2026-12-15', people: 2, icomPossible: 'Não confirmado', status: 'nao-pesquisado', level: 'alta', notes: 'Verificar abertura no inverno.' },
   { id: 't-madrid', cityId: 'madrid', attraction: 'Museus de Madrid', plannedDate: '2026-12-19', people: 2, icomPossible: 'Conforme museu', status: 'nao-pesquisado', level: 'opcional', notes: 'Decidir depois.' },
@@ -90,7 +90,7 @@ export const checklist: ChecklistCategory[] = [
     items: [
       { id: 'tr-colmar', label: 'Trem Colmar → Strasbourg (09/12)', note: 'TGV 1ª classe, comprado.' },
       { id: 'tr-vilarejos', label: 'Organizar vilas da Alsácia (08/12)', note: 'Eguisheim, Riquewihr e Kaysersberg.' },
-      { id: 'tr-floresta', label: 'Conferir reserva da Floresta Negra (11/12)', note: 'Operadora, itinerário, horários e valor.' },
+      { id: 'tr-floresta', label: 'Floresta Negra (11/12): encontro às 9h na Place de l’Étoile', note: 'Programa e horários conferidos; falta registrar o valor pago.' },
     ],
   },
   {
