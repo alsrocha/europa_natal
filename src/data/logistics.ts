@@ -24,7 +24,10 @@ export const extraPlaces = {
 
 /** Ingressos e reservas — sementes iniciais; tudo é editável e salvo no aparelho. */
 /** Aumente ao mudar ticketSeeds: os aparelhos com lista salva recebem a versão nova. */
-export const TICKET_SEEDS_VERSION = 3
+/** Ingressos que saíram do roteiro: são retirados dos aparelhos na próxima atualização. */
+export const RETIRED_TICKET_IDS = ['t-louvre', 't-grandpalais']
+
+export const TICKET_SEEDS_VERSION = 4
 
 export const ticketSeeds: Ticket[] = [
   { id: 't-sagrada', cityId: 'barcelona', attraction: 'Sagrada Família', plannedDate: '2026-11-28', time: '10:15 (Ricardo) · 10:45 (André)', people: 2, icomPossible: 'Ricardo: gratuito com ICOM, ingresso recebido', officialUrl: 'https://sagradafamilia.org/', status: 'pago', level: 'essencial', notes: 'Ambos com ingresso. Ainda não há confirmação de que possam entrar juntos.' },
@@ -34,10 +37,10 @@ export const ticketSeeds: Ticket[] = [
   { id: 't-palau', cityId: 'barcelona', attraction: 'Palau de la Música Catalana', plannedDate: '2026-11-30', people: 2, icomPossible: 'Não confirmado', officialUrl: 'https://www.palaumusica.cat/', status: 'nao-pesquisado', level: 'alta', notes: 'Opcional, conforme agenda.' },
   { id: 't-picasso', cityId: 'barcelona', attraction: 'Museu Picasso', plannedDate: '2026-11-30', people: 2, icomPossible: 'Ricardo: gratuito com ICOM', officialUrl: 'https://museupicasso.bcn.cat/', status: 'nao-pesquisado', level: 'opcional', notes: 'Alternativa; não reservado.' },
   { id: 't-vicens', cityId: 'barcelona', attraction: 'Casa Vicens', plannedDate: '2026-11-29', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://casavicens.org/', status: 'nao-pesquisado', level: 'opcional', notes: 'Alternativa, somente se escolhida.' },
-  { id: 't-garnier', cityId: 'paris', attraction: 'Palais Garnier', plannedDate: '2026-12-02', people: 2, icomPossible: 'Gratuidade não confirmada', officialUrl: 'https://www.operadeparis.fr/en/visits/palais-garnier/', status: 'pendente', level: 'essencial', notes: 'Reservar; encaixar antes do Louvre.' },
-  { id: 't-louvre', cityId: 'paris', attraction: 'Museu do Louvre', plannedDate: '2026-12-02', people: 2, icomPossible: 'Ricardo: gratuito com ICOM', officialUrl: 'https://ticket.louvre.fr/en', status: 'pendente', level: 'essencial', notes: 'Reservar entrada para os dois.' },
-  { id: 't-orsay', cityId: 'paris', attraction: 'Musée d’Orsay', plannedDate: '2026-12-03', people: 2, icomPossible: 'Ricardo: gratuito com ICOM', officialUrl: 'https://billetterie.musee-orsay.fr/', status: 'pendente', level: 'essencial', notes: 'Reservar; verificar a emissão do ingresso gratuito ICOM.' },
-  { id: 't-grandpalais', cityId: 'paris', attraction: 'Grand Palais (conforme exposição)', plannedDate: '2026-12-03', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://www.grandpalais.fr/', status: 'nao-pesquisado', level: 'opcional', notes: 'Possibilidade, sem sobrecarregar o dia 3.' },
+  { id: 't-garnier', cityId: 'paris', attraction: 'Palais Garnier', plannedDate: '2026-12-02', time: '09:30', people: 2, icomPossible: 'Gratuidade não confirmada', officialUrl: 'https://www.operadeparis.fr/en/visits/palais-garnier/', status: 'pendente', level: 'essencial', notes: 'Reservar para a manhã.' },
+  { id: 't-orsay', cityId: 'paris', attraction: 'Musée d’Orsay', plannedDate: '2026-12-02', time: '14:00', people: 2, icomPossible: 'Ricardo: gratuito com ICOM', officialUrl: 'https://billetterie.musee-orsay.fr/', status: 'pendente', level: 'essencial', notes: 'De preferência às 14h; verificar a emissão do ingresso gratuito ICOM.' },
+  { id: 't-rodin', cityId: 'paris', attraction: 'Musée Rodin', plannedDate: '2026-12-03', time: '10:00', people: 2, icomPossible: 'A confirmar (somente Ricardo)', officialUrl: 'https://www.musee-rodin.fr/', status: 'pendente', level: 'alta' },
+  { id: 't-vedettes', cityId: 'paris', attraction: 'Passeio de barco — Vedettes du Pont Neuf', plannedDate: '2026-12-04', time: 'perto das 17:00', people: 2, icomPossible: 'Não se aplica', officialUrl: 'https://www.vedettesdupontneuf.com/', status: 'pendente', level: 'alta' },
   { id: 't-pantheon', cityId: 'paris', attraction: 'Panthéon — nave, cripta e exposições', plannedDate: '2026-12-05', time: '10:30–12:00', people: 2, icomPossible: 'Ricardo: gratuito com ICOM', officialUrl: 'https://tickets.monuments-nationaux.fr/fr-FR/familles?site=2007056652440400272', status: 'pendente', level: 'alta', notes: 'Comprar o ingresso do André. Urgência menor que Louvre, Orsay e Palais Garnier.' },
   { id: 't-unterlinden', cityId: 'colmar', attraction: 'Musée Unterlinden', plannedDate: '2026-12-07', people: 2, icomPossible: 'Não confirmado', officialUrl: 'https://www.musee-unterlinden.com/', status: 'pendente', level: 'alta', notes: 'Verificar.' },
   { id: 't-alsacia', cityId: 'colmar', attraction: 'Vilas da Alsácia (Eguisheim, Riquewihr, Kaysersberg)', plannedDate: '2026-12-08', people: 2, icomPossible: 'Não se aplica', status: 'em-analise', level: 'alta', notes: 'Transporte ainda a definir.' },
@@ -76,9 +79,10 @@ export const checklist: ChecklistCategory[] = [
     items: [
       { id: 'i-sagrada', label: 'Sagrada Família (28/11)', note: 'Comprado para os dois.' },
       { id: 'i-guell', label: 'Comprar Park Güell (29/11)', note: 'Confirmar resposta sobre ICOM e escolher horário.' },
-      { id: 'i-louvre', label: 'Reservar Louvre (02/12)', note: 'Entrada para ambos, Ricardo com ICOM.' },
-      { id: 'i-garnier', label: 'Reservar Palais Garnier (02/12)', note: 'Encaixar antes do Louvre.' },
-      { id: 'i-orsay', label: 'Reservar Musée d’Orsay (03/12)', note: 'Verificar ingresso gratuito ICOM.' },
+      { id: 'i-garnier', label: 'Reservar Palais Garnier (02/12, manhã)' },
+      { id: 'i-orsay', label: 'Reservar Musée d’Orsay (02/12, 14h)', note: 'Verificar ingresso gratuito ICOM.' },
+      { id: 'i-rodin', label: 'Reservar Musée Rodin (03/12, 10h)' },
+      { id: 'i-vedettes', label: 'Barco Vedettes du Pont Neuf (04/12, perto das 17h)' },
       { id: 'i-pantheon', label: 'Comprar ingresso do Panthéon (05/12)', note: 'André; Ricardo com ICOM.' },
       { id: 'i-parlamento', label: 'Confirmar visita ao Parlamento Europeu (10/12)', note: 'Horário de funcionamento e acesso.' },
       { id: 'i-museus', label: 'Museus selecionados' },

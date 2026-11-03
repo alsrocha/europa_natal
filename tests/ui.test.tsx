@@ -31,7 +31,7 @@ describe('interface', () => {
         </Routes>
       </MemoryRouter>,
     )
-    expect(screen.getByRole('heading', { name: 'Paris histórica e literária' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Marais e passeio de barco pelo Sena' })).toBeInTheDocument()
     expect(screen.getByText('Musée Carnavalet')).toBeInTheDocument()
   })
 
