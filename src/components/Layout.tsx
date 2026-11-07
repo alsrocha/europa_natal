@@ -8,6 +8,7 @@ import {
   Home,
   Info,
   Landmark,
+  Lightbulb,
   Map as MapIcon,
   Menu,
   Moon,
@@ -33,6 +34,7 @@ const sections = [
   { to: '/checklist', label: 'Checklist', icon: CheckSquare },
   { to: '/caderno', label: 'Caderno', icon: NotebookPen },
   { to: '/gravacoes', label: 'Gravações', icon: Clapperboard },
+  { to: '/dicas', label: 'Dicas', icon: Lightbulb },
   { to: '/informacoes', label: 'Informações', icon: Info },
 ]
 

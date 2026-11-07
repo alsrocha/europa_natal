@@ -11,6 +11,7 @@ import { FinancePage } from './pages/FinancePage'
 import { ChecklistPage } from './pages/ChecklistPage'
 import { JournalPage } from './pages/JournalPage'
 import { IdeasPage } from './pages/IdeasPage'
+import { TipsPage } from './pages/TipsPage'
 import { InfoPage } from './pages/InfoPage'
 import { CreditsPage } from './pages/CreditsPage'
 
@@ -43,6 +44,7 @@ export function AppRoutes() {
           <Route path="/checklist" element={<ChecklistPage />} />
           <Route path="/caderno" element={<JournalPage />} />
           <Route path="/caderno/:date" element={<JournalPage />} />
+          <Route path="/dicas" element={<TipsPage />} />
           <Route path="/gravacoes" element={<IdeasPage />} />
           <Route path="/informacoes" element={<InfoPage />} />
           <Route path="/creditos" element={<CreditsPage />} />
